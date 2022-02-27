@@ -54,7 +54,6 @@ const Background = styled.div`
 `;
 
 const ModalCard = styled.div`
-  display: table;
   position: absolute;
   top: 30%;
   right: 50%;

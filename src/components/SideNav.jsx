@@ -52,7 +52,7 @@ const Header = styled.div`
   justify-content: start;
 
   p {
-    color: #ce2525;
+    color: #e2c275;
     font-weight: ${({ theme }) => theme.weight.bold};
   }
 `;
@@ -76,10 +76,10 @@ const MenuFrame = styled.div`
 
   &:hover p {
     transition: 0.3s ease-out;
-    color: ${({ active }) => !active && '#ce2525'};
+    color: ${({ active }) => !active && '#E2C275'};
   }
 
   p {
-    color: ${({ active }) => active && '#ce2525'};
+    color: ${({ active }) => active && '#E2C275'};
   }
 `;

@@ -1,19 +1,41 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import Main from '@components/Main';
-import TrainerInfo from './TrainerInfo';
-import FacilityInfo from './FacilityInfo';
-import Contact from './Contact';
-import Map from './Map';
 import Line from '@components/Line';
-import TabData from '@components/TabData';
-import * as Font from '@components/Font';
+import FacilityInfo from '@components/FacilityInfo';
+import TrainerInfo from '@components/TrainerInfo';
+import Map from '@components/Map';
+import TabContainer from '@components/TabContainer';
+import {
+  center1,
+  center2,
+  center3,
+  center4,
+  trainer1,
+  trainer2,
+  trainer3,
+  trainer4,
+  trainer5,
+  trainer6,
+  trainer7,
+} from '@assets/svg/one';
+
+const centerimages = [{ center: center1 }, { center: center2 }, { center: center3 }, { center: center4 }];
+
+const trainerimages = [
+  { trainer: trainer1 },
+  { trainer: trainer2 },
+  { trainer: trainer3 },
+  { trainer: trainer4 },
+  { trainer: trainer5 },
+  { trainer: trainer6 },
+  { trainer: trainer7 },
+];
 
 // Main
 const mainHeader = {
   info: {
-    title: '안산고잔 1호점',
-    subtitle: '안산고잔 1호점의 지점소개 페이지 입니다.',
+    title: '안산신길 1호점',
+    subtitle: '안산신길 1호점 안내 및 지점소개',
   },
 };
 
@@ -23,59 +45,16 @@ const One = () => {
   return (
     <React.Fragment>
       <Main mainHeader={mainHeader.info}>
-        <TabBoxWrapper>
-          {TabData.map((v, idx) => {
-            return (
-              <TabBox key={idx} onClick={() => setTabState(v.tabIdx)}>
-                <FontSize10>{v.tabname}</FontSize10>
-              </TabBox>
-            );
-          })}
-        </TabBoxWrapper>
+        <TabContainer setTabState={setTabState} url="https://pf.kakao.com/_FxgHWd" />
 
         <Line />
 
-        {tabState === 0 && <FacilityInfo />}
-        {tabState === 1 && <TrainerInfo />}
-        {tabState === 2 && <Contact />}
-        {tabState === 3 && <Map />}
+        {tabState === 0 && <FacilityInfo images={centerimages} />}
+        {tabState === 1 && <TrainerInfo images={trainerimages} />}
+        {tabState === 2 && <Map city="안산신길동710-2" phone="031-492-3337" />}
       </Main>
     </React.Fragment>
   );
 };
 
 export default One;
-
-const TabBoxWrapper = styled.div`
-  display: flex;
-  gap: 20px;
-  margin-top: 30px;
-
-  @media (max-width: 495px) {
-    flex-direction: column;
-  }
-`;
-
-const TabBox = styled.div`
-  width: 80px;
-  height: 30px;
-  text-align: center;
-  line-height: 30px;
-  border: 1px solid ${({ theme }) => theme.colors.MainGray};
-  border-radius: 10px;
-  cursor: pointer;
-  white-space: nowrap;
-
-  &:hover {
-    transition: 0.5s;
-    box-shadow: 1px 1px 1px;
-  }
-
-  @media (max-width: 1000px) {
-    box-shadow: 1px 1px 1px;
-  }
-`;
-
-const FontSize10 = styled(Font.FontSize10)`
-  font-weight: bold;
-`;

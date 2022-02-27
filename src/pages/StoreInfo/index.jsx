@@ -8,11 +8,12 @@ import Four from './Four';
 import Five from './Five';
 import Six from './Six';
 import Seven from './Seven';
+import Eight from './Eight';
 
 const sideNavTitle = { title: '남스짐 지점안내' };
 const sideNavData = [
   {
-    title: '안산 1호점',
+    title: '안산신길 1호점',
     link: '/store-info/one',
   },
   {
@@ -20,24 +21,28 @@ const sideNavData = [
     link: '/store-info/two',
   },
   {
-    title: '오류동 3호점',
+    title: '구로오류 3호점',
     link: '/store-info/three',
   },
   {
-    title: '천왕 4호점',
+    title: '구로천왕 4호점',
     link: '/store-info/four',
   },
   {
-    title: '부천옥길 5호점',
+    title: '시흥능곡 5호점',
     link: '/store-info/five',
   },
   {
-    title: '시흥능곡 6호점',
+    title: '부천옥길 6호점',
     link: '/store-info/six',
   },
   {
-    title: '안산 7호점',
+    title: '안산고잔 7호점',
     link: '/store-info/seven',
+  },
+  {
+    title: '군포산본 8호점',
+    link: '/store-info/eight',
   },
 ];
 
@@ -56,6 +61,7 @@ const StoreInfo = () => {
       {nthChildPath === 'five' && <Five />}
       {nthChildPath === 'six' && <Six />}
       {nthChildPath === 'seven' && <Seven />}
+      {nthChildPath === 'eight' && <Eight />}
     </Wrapper>
   );
 };

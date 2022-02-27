@@ -5,7 +5,7 @@ import * as Font from '@components/Font';
 import menu from '@assets/svg/menu.svg';
 
 const MENULIST = [
-  { title: '', link: '/begin', defaultlink: '/begin/basic' },
+  { title: '남스짐이란?', link: '/info', defaultlink: '/info' },
   {
     title: '지점소개',
     link: '/store-info',
@@ -13,23 +13,23 @@ const MENULIST = [
   },
   {
     title: '비포애프터',
-    link: '/product-management',
-    defaultlink: '/product-management/product-info',
+    link: '/bofore-after',
+    defaultlink: '/bofore-after',
   },
   {
     title: '리얼PT후기',
-    link: '/product-management',
-    defaultlink: '/product-management/product-info',
+    link: '/review',
+    defaultlink: '/review',
   },
   {
     title: '이벤트',
-    link: '/defect-management/',
-    defaultlink: '/defect-management/defect-info',
+    link: '/event',
+    defaultlink: '/event',
   },
   {
     title: '문의하기',
-    link: '/engineer-management',
-    defaultlink: '/engineer-management/info',
+    link: '/contact',
+    defaultlink: '/contact',
   },
 ];
 
@@ -74,13 +74,13 @@ const Navigation = () => {
 
       {/* mobile */}
       <MobileMenuFrame active={mobileMenu}>
-        <MobileMenuItem>
-          <Font.FontSize16>내정보</Font.FontSize16>
-        </MobileMenuItem>
-
         {MENULIST.map((val, idx) => {
           return (
-            <MobileMenuItem key={idx}>
+            <MobileMenuItem
+              key={idx}
+              active={val.link === `/${nthChildPath}`}
+              onClick={() => navigate(`${val.defaultlink}`)}
+            >
               <Font.FontSize16>{val.title}</Font.FontSize16>
             </MobileMenuItem>
           );
@@ -94,7 +94,7 @@ export default Navigation;
 
 const NavFrame = styled.div`
   display: flex;
-  height: 16vh;
+  height: 13vh;
   justify-content: space-around;
   align-items: center;
   padding: 0 ${({ theme }) => theme.spacing.space56};
@@ -104,7 +104,7 @@ const NavFrame = styled.div`
   @media (max-width: 1100px) {
     display: flex;
     justify-content: space-between;
-    height: 16vh;
+    height: 13vh;
   }
 `;
 
@@ -142,11 +142,11 @@ const MenuList = styled.li`
 
   &:hover p {
     transition: 0.3s ease-out;
-    color: #ce2525;
+    color: #e2c275;
   }
 
   p {
-    color: ${({ active }) => (active ? '#ce2525' : '')};
+    color: ${({ active }) => (active ? '#E2C275' : '')};
   }
 
   @media (max-width: 1100px) {
@@ -200,7 +200,7 @@ const MobileMenuItem = styled.li`
 
   &:hover p,
   &:hover li {
-    color: #ce2525;
+    color: #e2c275;
     transition: 0.3s ease-out;
   }
 `;

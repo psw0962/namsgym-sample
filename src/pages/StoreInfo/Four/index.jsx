@@ -1,16 +1,39 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import Main from '@components/Main';
-import TrainerInfo from './TrainerInfo';
-import FacilityInfo from './FacilityInfo';
 import Line from '@components/Line';
-import TabData from '@components/TabData';
+import FacilityInfo from '@components/FacilityInfo';
+import TrainerInfo from '@components/TrainerInfo';
+import Map from '@components/Map';
+import TabContainer from '@components/TabContainer';
+import {
+  center1,
+  center2,
+  center3,
+  center4,
+  trainer1,
+  trainer2,
+  trainer3,
+  trainer4,
+  trainer5,
+  trainer6,
+} from '@assets/svg/four';
+
+const centerimages = [{ center: center1 }, { center: center2 }, { center: center3 }, { center: center4 }];
+
+const trainerimages = [
+  { trainer: trainer1 },
+  { trainer: trainer2 },
+  { trainer: trainer3 },
+  { trainer: trainer4 },
+  { trainer: trainer5 },
+  { trainer: trainer6 },
+];
 
 // Main
 const mainHeader = {
   info: {
-    title: '천왕 4호점',
-    subtitle: '천왕 4호점의 지점소개 페이지 입니다.',
+    title: '구로천왕 4호점',
+    subtitle: '구로천왕 4호점 안내 및 지점소개',
   },
 };
 
@@ -20,44 +43,16 @@ const Four = () => {
   return (
     <React.Fragment>
       <Main mainHeader={mainHeader.info}>
-        <TabBoxWrapper>
-          {TabData.map((v, idx) => {
-            return (
-              <TabBox key={idx} onClick={() => setTabState(v.tabIdx)}>
-                {v.tabname}
-              </TabBox>
-            );
-          })}
-        </TabBoxWrapper>
+        <TabContainer setTabState={setTabState} url="https://pf.kakao.com/_kxaRxkxb" />
 
         <Line />
 
-        {tabState === 0 && <FacilityInfo />}
-        {tabState === 1 && <TrainerInfo />}
+        {tabState === 0 && <FacilityInfo images={centerimages} />}
+        {tabState === 1 && <TrainerInfo images={trainerimages} />}
+        {tabState === 2 && <Map city="구로천왕로36 4층" phone="02-2686-3337" />}
       </Main>
     </React.Fragment>
   );
 };
 
 export default Four;
-
-const TabBoxWrapper = styled.div`
-  display: flex;
-  gap: 20px;
-  margin-top: 30px;
-`;
-
-const TabBox = styled.div`
-  width: 80px;
-  height: 30px;
-  text-align: center;
-  line-height: 30px;
-  border: 1px solid ${({ theme }) => theme.colors.MainGray};
-  border-radius: 10px;
-  cursor: pointer;
-
-  &:hover {
-    transition: 0.5s;
-    background-color: ${({ theme }) => theme.colors.MainGray};
-  }
-`;

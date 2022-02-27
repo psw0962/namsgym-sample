@@ -1,11 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
 import * as Font from '@components/Font';
 
 const Main = ({ mainHeader, children }) => {
-  const navigate = useNavigate();
-
   return (
     <React.Fragment>
       <MainFrame>
@@ -75,9 +72,4 @@ const SubTitle = styled(Font.FontSize16)`
   font-weight: ${({ theme }) => theme.weight.bold};
   line-height: 26px;
   white-space: pre-wrap;
-`;
-
-const Image = styled.img`
-  width: 80px;
-  height: 80px;
 `;
